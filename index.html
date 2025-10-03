@@ -6,145 +6,131 @@
 <title>金沢旅行しおり｜2025/10/18-19</title>
 <meta name="description" content="スマホ最適化・軽量・ダークモード対応の金沢旅行しおり。日程の開閉・持ち物チェックの保存に対応。">
 <meta name="theme-color" content="#0b0b0c">
-<!-- OG（LINE等のプレビュー用） -->
 <meta property="og:title" content="金沢旅行しおり｜2025/10/18-19">
-<meta property="og:description" content="日程をタップで開閉・チェックリストは端末に保存されます。">
-<meta property="og:type" content="website">
+<meta property="og:description" content="日程はタップで開閉、スポット解説とWikipediaリンク付き。">
 
 <style>
-/* ========== Design System (Tech-styled Minimal) ========== */
+/* ========== Tech-styled Minimal ========== */
 :root{
-  --bg: #fafafa;
-  --surface: #ffffff;
-  --ink: #0b0b0c;
-  --ink-2:#3a3a3c;
-  --muted:#6b7280;
-  --line:#e5e7eb;
-  --tint:#111827;
-  --brand:#111827;       /* ほぼ黒に近い濃紺（Apple系の落ち着き） */
-  --radius: 14px;
-  --shadow: 0 1px 2px rgba(0,0,0,.06), 0 8px 24px rgba(0,0,0,.08);
+  --bg:#fafafa; --surface:#ffffff; --ink:#0b0b0c; --ink-2:#3a3a3c;
+  --muted:#6b7280; --line:#e5e7eb; --tint:#111827; --brand:#111827;
+  --radius:14px; --shadow:0 1px 2px rgba(0,0,0,.06), 0 8px 24px rgba(0,0,0,.08);
 }
 @media (prefers-color-scheme: dark){
   :root{
-    --bg:#0b0b0c;
-    --surface:#111214;
-    --ink:#f5f6f7;
-    --ink-2:#d0d3d6;
-    --muted:#9aa1aa;
-    --line:#26282b;
-    --tint:#f9fafb;
-    --brand:#f5f6f7;
-    --shadow: 0 1px 2px rgba(0,0,0,.5), 0 16px 32px rgba(0,0,0,.45);
+    --bg:#0b0b0c; --surface:#111214; --ink:#f5f6f7; --ink-2:#d0d3d6;
+    --muted:#9aa1aa; --line:#26282b; --tint:#f9fafb; --brand:#f5f6f7;
+    --shadow:0 1px 2px rgba(0,0,0,.5), 0 16px 32px rgba(0,0,0,.45);
   }
 }
-*{ box-sizing: border-box; }
-html,body{ margin:0; padding:0; background:var(--bg); color:var(--ink);
+*{ box-sizing:border-box; }
+html,body{
+  margin:0; background:var(--bg); color:var(--ink);
   font-family: system-ui, -apple-system, "SF Pro Text", "Hiragino Sans", "Noto Sans JP", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  line-height:1.6; -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; }
+  line-height:1.6; -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+}
 
-/* ===== Header / Hero ===== */
+/* ===== Header ===== */
 .header{
-  position: sticky; top:0; z-index:20;
-  backdrop-filter: saturate(180%) blur(12px);
+  position:sticky; top:0; z-index:20;
+  backdrop-filter:saturate(180%) blur(12px);
   background: color-mix(in oklab, var(--bg) 80%, transparent);
-  border-bottom: 1px solid var(--line);
+  border-bottom:1px solid var(--line);
 }
-.nav{
-  max-width: 960px; margin: 0 auto; padding: 14px 16px;
-  display:flex; align-items:center; justify-content:space-between;
-}
+.nav{ max-width:960px; margin:0 auto; padding:14px 16px; display:flex; align-items:center; justify-content:space-between; }
 .brand{ font-weight:700; letter-spacing:.01em; color:var(--brand); }
 .meta{ color:var(--muted); font-size:14px; }
 
-.hero{
-  max-width: 960px; margin: 16px auto 8px; padding: 0 16px 8px;
-}
-.hero-card{
-  border: 1px solid var(--line);
-  border-radius: clamp(12px, 2vw, 20px);
-  background: var(--surface);
-  box-shadow: var(--shadow);
-  overflow: clip;
-}
-.hero-media{
-  width:100%; height: 220px; background:
-    radial-gradient(1200px 400px at 10% 0%, rgba(0,0,0,.06), transparent 60%),
-    linear-gradient(180deg, #f3f4f6, #e7eaee);
-  display:block; object-fit: cover; object-position: center;
-}
-@media (prefers-color-scheme: dark){
-  .hero-media{
-    background:
-      radial-gradient(1000px 360px at 10% 0%, rgba(255,255,255,.06), transparent 60%),
-      linear-gradient(180deg, #15161a, #0f1013);
-  }
-}
-.hero-body{ padding: 18px 18px 16px; }
-.hero-title{
-  margin:0 0 6px; font-weight:800; letter-spacing:.01em;
-  font-size: clamp(20px, 3.6vw, 28px);
-}
-.hero-sub{ margin:0; color:var(--muted); }
-
 /* ===== Main ===== */
-main{ max-width: 960px; margin: 12px auto 48px; padding: 0 16px; }
+main{ max-width:960px; margin: 12px auto 48px; padding: 0 16px; }
 
+/* YouTube embed (Hero代替) */
+.video-wrap{
+  border:1px solid var(--line); border-radius: clamp(12px, 2vw, 20px);
+  background:var(--surface); box-shadow:var(--shadow); overflow:hidden;
+  margin:16px 0 8px;
+}
+.ratio{
+  position:relative; width:100%; padding-top:56.25%; /* 16:9 */
+  background:linear-gradient(180deg, #f3f4f6, #e7eaee);
+}
+.ratio > iframe{
+  position:absolute; inset:0; width:100%; height:100%; border:0;
+}
+
+/* Intro blurb */
+.intro{
+  border:1px solid var(--line); border-radius: clamp(12px, 2vw, 20px);
+  background:var(--surface); box-shadow:var(--shadow); padding:18px; margin:8px 0 16px;
+}
+.intro h1{ margin:0 0 6px; font-weight:800; letter-spacing:.01em; font-size: clamp(20px, 3.6vw, 28px); }
+.intro p{ margin:0; color:var(--muted); }
+
+/* Cards */
 .card{
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  background: var(--surface);
-  box-shadow: var(--shadow);
-  margin: 16px 0;
-  overflow: clip;
+  border:1px solid var(--line); border-radius:var(--radius);
+  background:var(--surface); box-shadow:var(--shadow);
+  margin:16px 0; overflow:clip;
 }
 .card-header{
   display:flex; align-items:center; justify-content:space-between;
-  padding: 14px 16px; cursor: pointer; user-select:none;
+  padding:14px 16px; cursor:pointer; user-select:none;
   background: color-mix(in oklab, var(--surface) 90%, transparent);
 }
-.card-header h2{
-  margin:0; font-weight: 700; letter-spacing:.01em; font-size: 16px;
-}
-.card-header .hint{ color: var(--muted); font-size: 13px; }
-.card-content{ display:none; padding: 10px 16px 14px; }
+.card-header h2{ margin:0; font-weight:700; letter-spacing:.01em; font-size:16px; }
+.card-header .hint{ color:var(--muted); font-size:13px; }
+.card-content{ display:none; padding:10px 16px 14px; }
 .card.open .card-content{ display:block; }
-.divider{ height:1px; background: var(--line); margin: 0 0 8px; }
+.divider{ height:1px; background:var(--line); margin:0 0 8px; }
 
 /* List / items */
-.item{ padding: 10px 0; display:flex; gap:12px; align-items: baseline; border-bottom: 1px dashed color-mix(in oklab, var(--line) 70%, transparent); }
-.item:last-child{ border-bottom: none; }
-.time{ flex: 0 0 auto; min-width: 64px; text-align:center; font-feature-settings:"tnum"; font-variant-numeric: tabular-nums;
-  color: var(--tint); border: 1px solid var(--line); border-radius: 10px; padding: 2px 8px; font-weight: 700; }
-.text{ flex: 1 1 auto; color: var(--ink-2); }
-.text b{ color: var(--ink); }
+.item{
+  padding:10px 0; display:flex; gap:12px; align-items:baseline;
+  border-bottom:1px dashed color-mix(in oklab, var(--line) 70%, transparent);
+}
+.item:last-child{ border-bottom:none; }
+.time{
+  flex:0 0 auto; min-width:64px; text-align:center;
+  font-feature-settings:"tnum"; font-variant-numeric: tabular-nums;
+  color:var(--tint); border:1px solid var(--line); border-radius:10px; padding:2px 8px; font-weight:700;
+}
+.text{ flex:1 1 auto; color:var(--ink-2); }
+.text b{ color:var(--ink); }
 
-/* Links / small UI */
-.link-row{ margin-top: 6px; display:flex; flex-wrap:wrap; gap:10px; }
+/* Spot details (tap to reveal) */
+.item.has-detail{ cursor:pointer; }
+.item.has-detail .text{ position:relative; }
+.item.has-detail .text::after{
+  content:"タップで概要"; position:absolute; right:0; top:0; transform:translateY(-2px);
+  color:var(--muted); font-size:12px;
+}
+.detail{
+  display:none; margin-top:8px; padding:10px 12px; border:1px dashed var(--line); border-radius:10px; background: color-mix(in oklab, var(--surface) 90%, transparent);
+  color:var(--ink-2); font-size:14px;
+}
+.item.open .detail{ display:block; }
+.detail a{ display:inline-block; margin-top:6px; }
+
+/* Links */
+.link-row{ margin-top:6px; display:flex; flex-wrap:wrap; gap:10px; }
 a.inline{
-  display:inline-flex; align-items:center; gap:6px;
-  padding: 6px 10px; border: 1px solid var(--line); border-radius: 10px;
-  text-decoration: none; color: var(--ink);
+  display:inline-flex; align-items:center; gap:6px; padding:6px 10px;
+  border:1px solid var(--line); border-radius:10px; text-decoration:none; color:var(--ink);
 }
 a.inline:hover{ background: color-mix(in oklab, var(--surface) 80%, var(--line)); }
-kbd{
-  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  font-size: 12px; padding: 2px 6px; border-radius: 6px; border:1px solid var(--line);
-  background: color-mix(in oklab, var(--surface) 88%, transparent);
-}
 
 /* Checklist */
-.checklist label{ display:flex; align-items:center; gap: 10px; padding: 8px 0; color: var(--ink-2); }
+.checklist label{ display:flex; align-items:center; gap:10px; padding:8px 0; color:var(--ink-2); }
 .checklist input[type="checkbox"]{ width:18px; height:18px; accent-color:#111827; }
-.grid-2{ display:grid; grid-template-columns: 1fr; gap:4px 24px; }
-@media (min-width: 680px){ .grid-2{ grid-template-columns: 1fr 1fr; } }
+.grid-2{ display:grid; grid-template-columns:1fr; gap:4px 24px; }
+@media (min-width:680px){ .grid-2{ grid-template-columns:1fr 1fr; } }
 
 /* Footer */
-footer{ color: var(--muted); font-size: 12px; text-align:center; padding: 40px 0 60px; }
+footer{ color:var(--muted); font-size:12px; text-align:center; padding:40px 0 60px; }
 
 /* Motion policy */
 @media (prefers-reduced-motion: reduce){
-  *{ animation: none !important; transition: none !important; }
+  *{ animation:none !important; transition:none !important; }
 }
 </style>
 </head>
@@ -158,19 +144,26 @@ footer{ color: var(--muted); font-size: 12px; text-align:center; padding: 40px 0
   </div>
 </div>
 
-<!-- Hero -->
-<section class="hero">
-  <!-- hero.jpg があれば差し替え表示。なければグラデが出ます -->
-  <img class="hero-media" src="images/hero.jpg" alt="" onerror="this.style.display='block'">
-  <div class="hero-card">
-    <div class="hero-body">
-      <h1 class="hero-title">金沢旅行しおり</h1>
-      <p class="hero-sub">スマホ最適化・軽量・ダークモード対応。日程はタップで開閉、チェックは端末に保存されます。</p>
-    </div>
-  </div>
-</section>
-
 <main>
+  <!-- YouTube（トップ画像の代わり） -->
+  <section class="video-wrap" aria-label="旅のムード動画">
+    <div class="ratio">
+      <iframe
+        src="https://www.youtube.com/embed/NTJB7reMSpw?modestbranding=1&rel=0"
+        title="YouTube video player"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+      ></iframe>
+    </div>
+  </section>
+
+  <!-- タイトル＋金沢の概要（1-2文） -->
+  <section class="intro">
+    <h1>金沢旅行しおり</h1>
+    <p>
+      加賀藩前田家の城下町として栄えた金沢は、武家文化と伝統工芸が息づく街。金箔や加賀友禅、近海の海の幸など、上質な美と味に出会える北陸のハイライトです。
+    </p>
+  </section>
 
   <!-- 概要 -->
   <section class="card open" data-key="overview">
@@ -179,28 +172,27 @@ footer{ color: var(--muted); font-size: 12px; text-align:center; padding: 40px 0
     </div>
     <div class="card-content" role="region" aria-label="概要">
       <div class="divider"></div>
+
       <div class="item">
-        <div class="time">出発</div>
-        <div class="text">10/18（土） <b>09:20</b> 東京駅（北陸新幹線）</div>
+        <div class="time">往路</div>
+        <div class="text">10/18（土） <b>09:20</b> 東京 → <b>11:52</b> 金沢</div>
       </div>
-      <div class="item">
-        <div class="time">到着</div>
-        <div class="text"><b>11:52</b> 金沢駅</div>
-      </div>
+
       <div class="item">
         <div class="time">復路</div>
         <div class="text">10/19（日） <b>15:57</b> 金沢 → <b>18:28</b> 東京</div>
       </div>
+
       <div class="item">
         <div class="time">ホテル</div>
-        <div class="text">ホテルアマネク金沢（片町）</div>
+        <div class="text">
+          ホテルアマネク金沢（片町）
+          <div class="link-row">
+            <a class="inline" href="https://www.google.com/maps/search/?api=1&query=%E3%83%9B%E3%83%86%E3%83%AB%E3%82%A2%E3%83%9E%E3%83%8D%E3%82%AF%E9%87%91%E6%B2%A2%20%20920-0981%20%E7%9F%B3%E5%B7%9D%E7%9C%8C%E9%87%91%E6%B2%A2%E5%B8%82%E7%89%87%E7%94%BA%EF%BC%92%E4%B8%81%E7%9B%AE%EF%BC%92%EF%BC%95%E2%88%92%EF%BC%91%EF%BC%97" target="_blank" rel="noopener">ホテル（地図）</a>
+          </div>
+        </div>
       </div>
-      <div class="link-row">
-        <a class="inline" href="https://www.google.com/maps/search/?api=1&query=%E6%9D%B1%E4%BA%AC%E9%A7%85" target="_blank" rel="noopener">東京駅（地図）</a>
-        <a class="inline" href="https://www.google.com/maps/search/?api=1&query=%E9%87%91%E6%B2%A2%E9%A7%85" target="_blank" rel="noopener">金沢駅（地図）</a>
-        <a class="inline" href="https://www.google.com/maps/search/?api=1&query=%E3%83%9B%E3%83%86%E3%83%AB%E3%82%A2%E3%83%9E%E3%83%8D%E3%82%AF%E9%87%91%E6%B2%A2%20%20920-0981%20%E7%9F%B3%E5%B7%9D%E7%9C%8C%E9%87%91%E6%B2%A2%E5%B8%82%E7%89%87%E7%94%BA%EF%BC%92%E4%B8%81%E7%9B%AE%EF%BC%92%EF%BC%95%E2%88%92%EF%BC%91%EF%BC%97" target="_blank" rel="noopener">ホテル（地図）</a>
-      </div>
-      <p style="margin-top:10px;color:var(--muted);">メモ：21世紀美術館は今回はスキップ。ランチは「ゴーゴーカレー」、市場の食べ歩きは控えめに。</p>
+
     </div>
   </section>
 
@@ -222,36 +214,43 @@ footer{ color: var(--muted); font-size: 12px; text-align:center; padding: 40px 0
         <div class="text">金沢駅 到着 → ホテルへ移動（荷物預け）</div>
       </div>
 
-      <div class="item">
+      <!-- ゴーゴーカレー（タップで概要表示） -->
+      <div class="item has-detail" tabindex="0" role="button" aria-expanded="false">
         <div class="time">12:30</div>
         <div class="text"><b>ゴーゴーカレー</b>
-          <div class="link-row">
-            <a class="inline" href="https://www.google.com/maps/search/?api=1&query=%E3%82%B4%E3%83%BC%E3%82%B4%E3%83%BC%E3%82%AB%E3%83%AC%E3%83%BC%20%E9%87%91%E6%B2%A2" target="_blank" rel="noopener">地図</a>
+          <div class="detail">
+            濃厚なルーと千切りキャベツ、ステンレス皿が特徴の金沢カレーを代表するチェーン。ボリュームのあるカツとの相性が抜群で、サクっと満足感の高いランチに最適。現地で“本場の味”を体験できるのも旅の醍醐味。<br>
+            <a href="https://ja.wikipedia.org/wiki/%E3%82%B4%E3%83%BC%E3%82%B4%E3%83%BC%E3%82%AB%E3%83%AC%E3%83%BC%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97" target="_blank" rel="noopener">Wikipediaで詳しく</a>
           </div>
         </div>
       </div>
 
-      <div class="item">
+      <!-- 近江町市場 -->
+      <div class="item has-detail" tabindex="0" role="button" aria-expanded="false">
         <div class="time">14:00</div>
-        <div class="text"><b>近江町市場</b>（軽めに）
-          <div class="link-row">
-            <a class="inline" href="https://www.google.com/maps/search/?api=1&query=%E8%BF%91%E6%B1%9F%E7%94%BA%E5%B8%82%E5%A0%B4" target="_blank" rel="noopener">地図</a>
+        <div class="text"><b>近江町市場</b>
+          <div class="detail">
+            “金沢の台所”として300年以上の歴史がある市場。日本海の新鮮な海産物や加賀野菜、惣菜が並び、活気あるローカルの空気を味わえる。テイクアウトの食べ歩きは控えめに、厳選して楽しむのがおすすめ。<br>
+            <a href="https://ja.wikipedia.org/wiki/%E8%BF%91%E6%B1%9F%E7%94%BA%E5%B8%82%E5%A0%B4" target="_blank" rel="noopener">Wikipediaで詳しく</a>
           </div>
         </div>
       </div>
 
-      <div class="item">
+      <!-- ひがし茶屋街 -->
+      <div class="item has-detail" tabindex="0" role="button" aria-expanded="false">
         <div class="time">16:00</div>
-        <div class="text">ひがし茶屋街（カフェ休憩）</div>
+        <div class="text">ひがし茶屋街（カフェ休憩）
+          <div class="detail">
+            格子戸の町家が連なる情緒豊かな茶屋街。夕方以降は観光客も落ち着き、石畳に灯る光が映えるフォトスポットが点在。和スイーツや抹茶で一息つきながら、金沢らしい古都の風情を満喫できる。<br>
+            <a href="https://ja.wikipedia.org/wiki/%E3%81%B2%E3%81%8C%E3%81%97%E8%8C%B6%E5%B1%8B%E8%A1%97" target="_blank" rel="noopener">Wikipediaで詳しく</a>
+          </div>
+        </div>
       </div>
 
       <div class="item">
         <div class="time">19:00</div>
         <div class="text"><b>味処 高崎</b>（予約）
           <div style="color:var(--muted);font-size:13px;margin-top:4px;">〒920-0865 石川県金沢市長町１丁目２−２２</div>
-          <div class="link-row">
-            <a class="inline" href="https://www.google.com/maps/search/?api=1&query=%E5%91%B3%E5%87%A6%20%E9%AB%98%E5%B4%8E%20%E9%87%91%E6%B2%A2" target="_blank" rel="noopener">地図</a>
-          </div>
         </div>
       </div>
 
@@ -271,11 +270,13 @@ footer{ color: var(--muted); font-size: 12px; text-align:center; padding: 40px 0
         <div class="text">朝食（ホテル周辺）</div>
       </div>
 
-      <div class="item">
+      <!-- 兼六園（タップで概要表示） -->
+      <div class="item has-detail" tabindex="0" role="button" aria-expanded="false">
         <div class="time">09:30</div>
         <div class="text"><b>兼六園</b>
-          <div class="link-row">
-            <a class="inline" href="https://www.google.com/maps/search/?api=1&query=%E5%85%BC%E5%85%AD%E5%9C%92" target="_blank" rel="noopener">地図</a>
+          <div class="detail">
+            日本三名園の一つ。池泉回遊式の大庭園で、広々とした眺望・幽邃・人力・蒼古・水泉・眺望の六勝を備えるとされる。季節ごとの表情が美しく、朝の澄んだ空気の中を歩くと気持ちが整う名所。<br>
+            <a href="https://ja.wikipedia.org/wiki/%E5%85%BC%E5%85%AD%E5%9C%92" target="_blank" rel="noopener">Wikipediaで詳しく</a>
           </div>
         </div>
       </div>
@@ -298,7 +299,7 @@ footer{ color: var(--muted); font-size: 12px; text-align:center; padding: 40px 0
     </div>
   </section>
 
-  <!-- 持ち物チェック -->
+  <!-- 持ち物チェック（指定の項目へ差し替え） -->
   <section class="card" data-key="pack">
     <div class="card-header" role="button" tabindex="0" aria-expanded="false">
       <h2>持ち物チェック</h2><div class="hint">タップで開閉</div>
@@ -306,14 +307,11 @@ footer{ color: var(--muted); font-size: 12px; text-align:center; padding: 40px 0
     <div class="card-content" role="region" aria-label="持ち物チェック">
       <div class="divider"></div>
       <div class="grid-2 checklist">
-        <label><input type="checkbox"> 身分証 / 保険証</label>
-        <label><input type="checkbox"> 旅程（このページURL）</label>
-        <label><input type="checkbox"> モバイルバッテリー & ケーブル</label>
-        <label><input type="checkbox"> 現金・カード・交通系IC</label>
-        <label><input type="checkbox"> 常備薬 / 絆創膏</label>
-        <label><input type="checkbox"> 折り畳み傘</label>
-        <label><input type="checkbox"> カメラ / 充電</label>
-        <label><input type="checkbox"> ハンドタオル / ティッシュ</label>
+        <label><input type="checkbox"> 楽しむ心</label>
+        <label><input type="checkbox"> 新幹線で楽しめる何か</label>
+        <label><input type="checkbox"> カメラなど記録媒体</label>
+        <label><input type="checkbox"> 現金（キャッシュレス少ないかも）</label>
+        <label><input type="checkbox"> 充電器</label>
       </div>
     </div>
   </section>
@@ -323,27 +321,35 @@ footer{ color: var(--muted); font-size: 12px; text-align:center; padding: 40px 0
 <footer>© 2025 Kanazawa Trip</footer>
 
 <script>
-/* アコーディオン開閉＋状態保存（localStorage） */
+/* カード開閉＋状態保存 */
 document.querySelectorAll('.card').forEach(card => {
   const key = 'open-' + (card.dataset.key || '');
   const header = card.querySelector('.card-header');
-  const region = card.querySelector('.card-content');
 
-  // 保存状態の復元
   if (localStorage.getItem(key) === '1') {
     card.classList.add('open');
     header.setAttribute('aria-expanded', 'true');
   }
-
   function toggle(){
     const isOpen = card.classList.toggle('open');
     localStorage.setItem(key, isOpen ? '1' : '0');
     header.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
   }
-
   header.addEventListener('click', toggle);
-  header.addEventListener('keydown', (e) => {
+  header.addEventListener('keydown', e => {
     if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
+  });
+});
+
+/* スポット詳細（各itemタップで開閉） */
+document.querySelectorAll('.item.has-detail').forEach(el => {
+  function toggleItem(){
+    const isOpen = el.classList.toggle('open');
+    el.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  }
+  el.addEventListener('click', toggleItem);
+  el.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleItem(); }
   });
 });
 
