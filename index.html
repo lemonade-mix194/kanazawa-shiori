@@ -3,113 +3,235 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>金沢旅行しおり（2025/10/18-19）</title>
-<meta name="description" content="2025年10月18-19日の金沢旅行インタラクティブしおり">
+<title>★金沢旅行しおり（2025/10/18-19）</title>
+<meta name="theme-color" content="#ffcc00">
+<meta name="description" content="ビックリマンシール風デザインの金沢旅行インタラクティブしおり">
 <style>
-  :root { --brand:#0d6efd; --bg:#f7f7f9; --ink:#0f172a; }
-  * { box-sizing: border-box; }
-  html, body { margin:0; padding:0; background:var(--bg); color:var(--ink); font-family: system-ui, -apple-system, 'Hiragino Kaku Gothic ProN', 'Segoe UI', Roboto, 'Noto Sans JP', sans-serif; }
-  header { padding:18px 16px; background:var(--brand); color:#fff; text-align:center; position:sticky; top:0; z-index:10; }
-  header h1 { margin:0; font-size:20px; letter-spacing:.02em; }
-  header p { margin:6px 0 0; opacity:.9; font-size:13px; }
-  main { max-width:840px; margin:0 auto; padding:12px; }
-  .card { background:#fff; border-radius:14px; margin:12px 0; box-shadow:0 6px 16px rgba(0,0,0,.06); overflow:hidden; }
-  .card-header { padding:16px; background:#e9f1ff; color:#012a4a; display:flex; align-items:center; justify-content:space-between; }
-  .card-header h2 { margin:0; font-size:16px; }
-  .toggle { font-size:18px; opacity:.8; }
-  .card-content { display:none; padding:14px 16px; }
-  .card.open .card-content { display:block; }
-  .grid { display:grid; grid-template-columns: 1fr; gap:10px; }
-  .item { line-height:1.6; padding:6px 0; }
-  .time { color:var(--brand); font-weight:700; margin-right:.35em; }
-  .spot { font-weight:600; }
-  .addr { color:#475569; font-size:12px; margin-left:24px; }
-  .link-row a { display:inline-block; margin-right:12px; text-decoration:underline; color:var(--brand); }
-  .badge { background:#eef2ff; color:#3730a3; padding:2px 8px; border-radius:999px; font-size:11px; margin-left:6px; }
-  .note { background:#fff7ed; border-left:4px solid #fb923c; padding:10px 12px; border-radius:8px; font-size:13px; }
-  .checklist label { display:flex; align-items:center; gap:10px; padding:8px 0; }
-  .twocol { display:grid; grid-template-columns:1fr; gap:12px; }
-  @media (min-width:680px) { .twocol { grid-template-columns:1fr 1fr; } }
-  footer { text-align:center; color:#64748b; font-size:12px; padding:24px 0 40px; }
+  /* ===== Sticker Pop Theme (Bikkuriman inspired) ===== */
+  :root{
+    --foil1: #ffd166; --foil2:#ff8fab; --foil3:#7bf1a8; --foil4:#9ad0f5;
+    --ink:#1b1b1b; --bg:#0a0a0a; --gold:#f7cc38; --gold-deep:#c89b00;
+    --accent:#ff3b7a; --accent2:#41d6ff; --accent3:#7aff69;
+  }
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; color:var(--ink);
+    font-family: system-ui, -apple-system, "Hiragino Kaku Gothic ProN", "Segoe UI", Roboto, "Noto Sans JP", sans-serif;
+    background:#0c0c0c; }
+
+  /* キラキラ箔風背景 */
+  body::before{
+    content:""; position:fixed; inset:0; z-index:-2;
+    background:
+      radial-gradient(1200px 800px at 10% 0%, rgba(255,255,255,.12), transparent 60%),
+      radial-gradient(900px 700px at 100% 100%, rgba(255,255,255,.08), transparent 55%),
+      repeating-linear-gradient(135deg,
+        rgba(255,255,255,.07) 0 6px, rgba(255,255,255,0) 6px 12px);
+  }
+  body::after{
+    /* 虹色のゆっくり動く箔 */
+    content:""; position:fixed; inset:-20% -20%; z-index:-3;
+    background: conic-gradient(from 0deg,
+      var(--foil1), var(--foil2), var(--foil3), var(--foil4), var(--foil1));
+    filter: saturate(130%) blur(16px) opacity(.28);
+    animation: spin 18s linear infinite;
+  }
+  @keyframes spin { to{ transform: rotate(1turn); } }
+
+  header{
+    position:sticky; top:0; z-index:5; padding:18px 14px 22px;
+    background: linear-gradient(180deg, #1a1a1a 0%, #111 100%);
+    border-bottom: 3px solid rgba(255,255,255,.08);
+    text-align:center;
+  }
+  /* シールロゴっぽいタイトル：白フチ＋影 */
+  .title{
+    display:inline-block; padding:8px 14px; transform:skewX(-6deg);
+    color:#fff700; letter-spacing:.03em; font-weight:900; font-size:22px;
+    text-shadow:
+      0 0 0 #fff, 0 1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff, 0 -1px 0 #fff, /* 白フチ */
+      2px 2px 0 #000, 4px 4px 0 rgba(0,0,0,.35); /* 影 */
+    background:
+      linear-gradient(180deg, #ffef5a 0%, #ffd84a 45%, #ffc107 60%, #ffef5a 100%);
+    border: 3px solid #000; border-radius:10px;
+    box-shadow: 0 6px 0 #000, 0 10px 14px rgba(0,0,0,.45);
+  }
+  .subtitle{
+    margin:10px auto 0; color:#fff; opacity:.9; font-size:13px;
+    text-shadow:0 2px 6px rgba(0,0,0,.6);
+  }
+
+  main{ max-width:860px; margin:0 auto; padding:14px; }
+
+  /* ステッカー枠のカード */
+  .card{
+    background: linear-gradient(180deg, #ffffff, #f7f7f7);
+    margin:14px 6px; border-radius:16px;
+    border: 3px solid var(--gold-deep);
+    box-shadow:
+      0 0 0 4px var(--gold),
+      0 10px 0 #000,
+      0 16px 20px rgba(0,0,0,.45);
+    overflow:hidden; position:relative;
+  }
+  /* 斜めに走るキラッとハイライト */
+  .card::after{
+    content:""; position:absolute; inset:0; pointer-events:none;
+    background: linear-gradient(120deg, transparent 0 40%,
+      rgba(255,255,255,.6) 47%, rgba(255,255,255,.85) 50%,
+      rgba(255,255,255,.6) 53%, transparent 60%);
+    transform: translateX(-120%);
+    animation: shine 3.6s ease-in-out infinite;
+  }
+  @keyframes shine{
+    0%, 65%{ transform: translateX(-130%); }
+    85%{ transform: translateX(130%); }
+    100%{ transform: translateX(130%); }
+  }
+
+  .card-header{
+    background:
+      repeating-linear-gradient(45deg,
+        rgba(255,255,255,.7) 0 6px, rgba(255,255,255,.45) 6px 12px),
+      linear-gradient(180deg, #ff77a8, #ff4d7a);
+    color:#12010a;
+    padding:14px 16px; display:flex; align-items:center; justify-content:space-between;
+    cursor:pointer; user-select:none;
+    border-bottom:2px solid rgba(0,0,0,.08);
+  }
+  .card-header h2{
+    margin:0; font-size:16px; font-weight:900; letter-spacing:.02em;
+    color:#fff;
+    text-shadow:
+      0 0 0 #000, 0 1px 0 #000, 1px 0 0 #000, -1px 0 0 #000, 0 -1px 0 #000,
+      2px 2px 0 rgba(0,0,0,.35);
+  }
+  .badge{
+    margin-left:8px; padding:2px 8px; border-radius:999px;
+    font-size:11px; font-weight:700; color:#111; background:#fffbcc; border:2px solid #000;
+  }
+  .toggle{
+    font-size:18px; color:#fff; text-shadow:2px 2px 0 #000;
+    transform: translateY(1px);
+  }
+
+  .card-content{ display:none; padding:14px 16px; }
+  .card.open .card-content{ display:block; }
+
+  .item{ line-height:1.6; padding:8px 0; }
+  .time{ display:inline-block; min-width:64px; text-align:center;
+    color:#fff; background:linear-gradient(180deg, #00d0ff, #0096ff);
+    border:2px solid #000; border-radius:10px; font-weight:900; margin-right:8px;
+    box-shadow:2px 2px 0 #000;
+  }
+  .spot{ font-weight:900; color:#ff2f6d; text-shadow:1px 1px 0 #fff; }
+  .addr{ color:#5b6068; font-size:12px; margin:4px 0 0 72px; }
+  .note{
+    margin-top:8px; padding:10px 12px; border-radius:12px;
+    background:#fff6d1; border:2px dashed #000; box-shadow:2px 2px 0 #000;
+    font-weight:700;
+  }
+  .map-link{
+    display:inline-block; margin-left:6px; padding:4px 8px; text-decoration:none;
+    color:#111; background:#a7f3d0; border:2px solid #000; border-radius:8px; font-weight:800;
+    box-shadow:2px 2px 0 #000;
+  }
+
+  .checklist label{ display:flex; align-items:center; gap:10px; padding:8px 0; font-weight:700; }
+  .checklist input[type="checkbox"]{
+    width:20px; height:20px; accent-color:#ff3b7a;
+    border:2px solid #000; border-radius:4px;
+  }
+  .twocol{ display:grid; grid-template-columns:1fr; gap:8px; }
+  @media (min-width:680px){ .twocol{ grid-template-columns:1fr 1fr; } }
+
+  footer{ text-align:center; color:#eee; font-size:12px; padding:28px 0 40px;
+    text-shadow:0 2px 8px rgba(0,0,0,.6); }
 </style>
 </head>
 <body>
-<header>
-  <h1>金沢旅行しおり</h1>
-  <p>2025/10/18（土）- 10/19（日）</p>
-</header>
+  <header>
+    <div class="title">金沢旅行しおり</div>
+    <div class="subtitle">2025/10/18（土）- 10/19（日）｜ビックリマン風ポップデザイン</div>
+  </header>
 
-<main>
+  <main>
 
-  <!-- 概要 -->
-  <section class="card open" data-key="overview">
-    <div class="card-header">
-      <h2>概要</h2><span class="toggle">▼</span>
-    </div>
-    <div class="card-content">
-      <div class="grid">
-        <div class="item"><span class="spot">出発：</span>10/18（土）<span class="time">09:20</span> 東京駅（北陸新幹線）</div>
-        <div class="item"><span class="spot">到着：</span><span class="time">11:52</span> 金沢駅</div>
-        <div class="item"><span class="spot">復路：</span>10/19（日）<span class="time">15:57</span> 金沢発 → <span class="time">18:28</span> 東京着</div>
-        <div class="item"><span class="spot">ホテル：</span>ホテルアマネク金沢 <span class="badge">片町</span></div>
+    <!-- 概要 -->
+    <section class="card open" data-key="overview">
+      <div class="card-header">
+        <h2>概要 <span class="badge">基本情報</span></h2><span class="toggle">▼</span>
       </div>
-      <div class="note">メモ：21世紀美術館は今回はスキップ。ランチは「ゴーゴーカレー」、市場の食べ歩きは控えめに。</div>
-    </div>
-  </section>
+      <div class="card-content">
+        <div class="item"><span class="spot">出発：</span><span class="time">09:20</span> 東京駅（北陸新幹線）</div>
+        <div class="item"><span class="spot">到着：</span><span class="time">11:52</span> 金沢駅</div>
+        <div class="item"><span class="spot">復路：</span><span class="time">15:57</span> 金沢 → <span class="time">18:28</span> 東京</div>
+        <div class="item"><span class="spot">ホテル：</span>ホテルアマネク金沢 <span class="badge">片町</span></div>
+        <div class="note">メモ：21世紀美術館はスキップ。ランチは「ゴーゴーカレー」／市場食べ歩きは控えめに。</div>
+      </div>
+    </section>
 
-  <!-- Day 1 -->
-  <section class="card open" data-key="day1">
-    <div class="card-header">
-      <h2>Day 1（10/18 土）</h2><span class="toggle">▼</span>
-    </div>
-    <div class="card-content">
-      <div class="item"><span class="time">09:20</span> 東京駅 出発（北陸新幹線）</div>
-      <div class="item"><span class="time">11:52</span> 金沢駅 到着 → ホテルへ移動（荷物預け）</div>
-      <div class="item"><span class="time">12:30</span> ゴーゴーカレー でランチ</div>
-      <div class="item"><span class="time">14:00</span> 近江町市場 散策（軽めに）</div>
-      <div class="item"><span class="time">16:00</span> ひがし茶屋街 散歩（甘味・カフェ休憩）</div>
-      <div class="item"><span class="time">19:00</span> 味処 高崎 で夕食</div>
-      <div class="note">移動ヒント：市内はバスが便利。時間節約ならタクシー併用◎</div>
-    </div>
-  </section>
+    <!-- Day 1 -->
+    <section class="card open" data-key="day1">
+      <div class="card-header">
+        <h2>Day 1（10/18 土） <span class="badge">旅のはじまり</span></h2><span class="toggle">▼</span>
+      </div>
+      <div class="card-content">
+        <div class="item"><span class="time">09:20</span> 東京駅 出発（北陸新幹線）</div>
+        <div class="item"><span class="time">11:52</span> 金沢駅 到着 → ホテルへ（荷物預け）</div>
+        <div class="item"><span class="time">12:30</span> <span class="spot">ゴーゴーカレー</span>
+          <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E3%82%B4%E3%83%BC%E3%82%B4%E3%83%BC%E3%82%AB%E3%83%AC%E3%83%BC%20%E9%87%91%E6%B2%A2" target="_blank" rel="noopener">地図</a>
+        </div>
+        <div class="item"><span class="time">14:00</span> <span class="spot">近江町市場</span>（軽め散策）
+          <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E8%BF%91%E6%B1%9F%E7%94%BA%E5%B8%82%E5%A0%B4" target="_blank" rel="noopener">地図</a>
+        </div>
+        <div class="item"><span class="time">16:00</span> ひがし茶屋街（甘味・カフェ）</div>
+        <div class="item"><span class="time">19:00</span> <span class="spot">味処 高崎</span>（予約）
+          <div class="addr">〒920-0865 石川県金沢市長町１丁目２−２２</div>
+          <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E5%91%B3%E5%87%A6%20%E9%AB%98%E5%B4%8E%20%E9%87%91%E6%B2%A2" target="_blank" rel="noopener">地図</a>
+        </div>
+        <div class="note">移動ヒント：市内はバスが便利。時間節約ならタクシー併用◎</div>
+      </div>
+    </section>
 
-  <!-- Day 2 -->
-  <section class="card" data-key="day2">
-    <div class="card-header">
-      <h2>Day 2（10/19 日）</h2><span class="toggle">▼</span>
-    </div>
-    <div class="card-content">
-      <div class="item"><span class="time">08:30</span> 朝食（ホテル周辺）</div>
-      <div class="item"><span class="time">09:30</span> 兼六園 散策</div>
-      <div class="item"><span class="time">11:00</span> お土産ショッピング（近江町市場 or 金沢百番街）</div>
-      <div class="item"><span class="time">14:40</span> 金沢駅へ移動（駅弁・ドリンク確保）</div>
-      <div class="item"><span class="time">15:57</span> 金沢 発 → <span class="time">18:28</span> 東京 着</div>
-    </div>
-  </section>
+    <!-- Day 2 -->
+    <section class="card" data-key="day2">
+      <div class="card-header">
+        <h2>Day 2（10/19 日） <span class="badge">締め</span></h2><span class="toggle">▼</span>
+      </div>
+      <div class="card-content">
+        <div class="item"><span class="time">08:30</span> 朝食（ホテル周辺）</div>
+        <div class="item"><span class="time">09:30</span> <span class="spot">兼六園</span>
+          <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E5%85%BC%E5%85%AD%E5%9C%92" target="_blank" rel="noopener">地図</a>
+        </div>
+        <div class="item"><span class="time">11:00</span> お土産ショッピング（近江町 or 金沢百番街）</div>
+        <div class="item"><span class="time">14:40</span> 金沢駅へ（駅弁・ドリンク確保）</div>
+        <div class="item"><span class="time">15:57</span> 金沢 発 → <span class="time">18:28</span> 東京 着</div>
+      </div>
+    </section>
 
-  <!-- 持ち物チェック -->
-  <section class="card" data-key="pack">
-    <div class="card-header">
-      <h2>持ち物チェック</h2><span class="toggle">▼</span>
-    </div>
-    <div class="card-content checklist twocol">
-      <label><input type="checkbox"> 身分証 / 保険証</label>
-      <label><input type="checkbox"> 旅程（このページURL）</label>
-      <label><input type="checkbox"> モバイルバッテリー & ケーブル</label>
-      <label><input type="checkbox"> 現金・カード・交通系IC</label>
-      <label><input type="checkbox"> 常備薬 / 絆創膏</label>
-      <label><input type="checkbox"> 折り畳み傘</label>
-      <label><input type="checkbox"> カメラ / 充電</label>
-      <label><input type="checkbox"> ハンドタオル / ティッシュ</label>
-    </div>
-  </section>
+    <!-- 持ち物チェック -->
+    <section class="card" data-key="pack">
+      <div class="card-header">
+        <h2>持ち物チェック <span class="badge">準備</span></h2><span class="toggle">▼</span>
+      </div>
+      <div class="card-content checklist twocol">
+        <label><input type="checkbox"> 身分証 / 保険証</label>
+        <label><input type="checkbox"> 旅程（このページURL）</label>
+        <label><input type="checkbox"> モバイルバッテリー & ケーブル</label>
+        <label><input type="checkbox"> 現金・カード・交通系IC</label>
+        <label><input type="checkbox"> 常備薬 / 絆創膏</label>
+        <label><input type="checkbox"> 折り畳み傘</label>
+        <label><input type="checkbox"> カメラ / 充電</label>
+        <label><input type="checkbox"> ハンドタオル / ティッシュ</label>
+      </div>
+    </section>
 
-</main>
+  </main>
 
-<footer>© 2025 Kanazawa Trip</footer>
+  <footer>© 2025 Kanazawa Trip • Sticker Pop Theme</footer>
 
 <script>
-  // カード開閉と状態保存
+  // --- カード開閉（状態を保存） ---
   document.querySelectorAll('.card').forEach(card => {
     const key = 'open-' + (card.dataset.key || '');
     if (localStorage.getItem(key) === '1') card.classList.add('open');
@@ -119,7 +241,7 @@
     });
   });
 
-  // チェックリストの状態保存
+  // --- チェックリスト永続化 ---
   document.querySelectorAll('.checklist input[type="checkbox"]').forEach((cb, i) => {
     const k = 'check-' + i;
     cb.checked = localStorage.getItem(k) === '1';
