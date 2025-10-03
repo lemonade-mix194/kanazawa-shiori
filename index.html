@@ -1,220 +1,311 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>★金沢旅行しおり（2025/10/18-19）</title>
-<meta name="theme-color" content="#ffcc00">
-<meta name="description" content="ビックリマンシール風デザインの金沢旅行インタラクティブしおり">
+<title>金沢旅行しおり｜2025/10/18-19</title>
+<meta name="description" content="スマホ最適化・軽量・ダークモード対応の金沢旅行しおり。日程の開閉・持ち物チェックの保存に対応。">
+<meta name="theme-color" content="#0b0b0c">
+<!-- OG（LINE等のプレビュー用） -->
+<meta property="og:title" content="金沢旅行しおり｜2025/10/18-19">
+<meta property="og:description" content="日程をタップで開閉・チェックリストは端末に保存されます。">
+<meta property="og:type" content="website">
+
 <style>
-  /* ===== Sticker Pop Theme (Bikkuriman inspired) ===== */
+/* ========== Design System (Tech-styled Minimal) ========== */
+:root{
+  --bg: #fafafa;
+  --surface: #ffffff;
+  --ink: #0b0b0c;
+  --ink-2:#3a3a3c;
+  --muted:#6b7280;
+  --line:#e5e7eb;
+  --tint:#111827;
+  --brand:#111827;       /* ほぼ黒に近い濃紺（Apple系の落ち着き） */
+  --radius: 14px;
+  --shadow: 0 1px 2px rgba(0,0,0,.06), 0 8px 24px rgba(0,0,0,.08);
+}
+@media (prefers-color-scheme: dark){
   :root{
-    --foil1: #ffd166; --foil2:#ff8fab; --foil3:#7bf1a8; --foil4:#9ad0f5;
-    --ink:#1b1b1b; --bg:#0a0a0a; --gold:#f7cc38; --gold-deep:#c89b00;
-    --accent:#ff3b7a; --accent2:#41d6ff; --accent3:#7aff69;
+    --bg:#0b0b0c;
+    --surface:#111214;
+    --ink:#f5f6f7;
+    --ink-2:#d0d3d6;
+    --muted:#9aa1aa;
+    --line:#26282b;
+    --tint:#f9fafb;
+    --brand:#f5f6f7;
+    --shadow: 0 1px 2px rgba(0,0,0,.5), 0 16px 32px rgba(0,0,0,.45);
   }
-  *{ box-sizing:border-box; }
-  html,body{ margin:0; color:var(--ink);
-    font-family: system-ui, -apple-system, "Hiragino Kaku Gothic ProN", "Segoe UI", Roboto, "Noto Sans JP", sans-serif;
-    background:#0c0c0c; }
+}
+*{ box-sizing: border-box; }
+html,body{ margin:0; padding:0; background:var(--bg); color:var(--ink);
+  font-family: system-ui, -apple-system, "SF Pro Text", "Hiragino Sans", "Noto Sans JP", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height:1.6; -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; }
 
-  /* キラキラ箔風背景 */
-  body::before{
-    content:""; position:fixed; inset:0; z-index:-2;
+/* ===== Header / Hero ===== */
+.header{
+  position: sticky; top:0; z-index:20;
+  backdrop-filter: saturate(180%) blur(12px);
+  background: color-mix(in oklab, var(--bg) 80%, transparent);
+  border-bottom: 1px solid var(--line);
+}
+.nav{
+  max-width: 960px; margin: 0 auto; padding: 14px 16px;
+  display:flex; align-items:center; justify-content:space-between;
+}
+.brand{ font-weight:700; letter-spacing:.01em; color:var(--brand); }
+.meta{ color:var(--muted); font-size:14px; }
+
+.hero{
+  max-width: 960px; margin: 16px auto 8px; padding: 0 16px 8px;
+}
+.hero-card{
+  border: 1px solid var(--line);
+  border-radius: clamp(12px, 2vw, 20px);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  overflow: clip;
+}
+.hero-media{
+  width:100%; height: 220px; background:
+    radial-gradient(1200px 400px at 10% 0%, rgba(0,0,0,.06), transparent 60%),
+    linear-gradient(180deg, #f3f4f6, #e7eaee);
+  display:block; object-fit: cover; object-position: center;
+}
+@media (prefers-color-scheme: dark){
+  .hero-media{
     background:
-      radial-gradient(1200px 800px at 10% 0%, rgba(255,255,255,.12), transparent 60%),
-      radial-gradient(900px 700px at 100% 100%, rgba(255,255,255,.08), transparent 55%),
-      repeating-linear-gradient(135deg,
-        rgba(255,255,255,.07) 0 6px, rgba(255,255,255,0) 6px 12px);
+      radial-gradient(1000px 360px at 10% 0%, rgba(255,255,255,.06), transparent 60%),
+      linear-gradient(180deg, #15161a, #0f1013);
   }
-  body::after{
-    /* 虹色のゆっくり動く箔 */
-    content:""; position:fixed; inset:-20% -20%; z-index:-3;
-    background: conic-gradient(from 0deg,
-      var(--foil1), var(--foil2), var(--foil3), var(--foil4), var(--foil1));
-    filter: saturate(130%) blur(16px) opacity(.28);
-    animation: spin 18s linear infinite;
-  }
-  @keyframes spin { to{ transform: rotate(1turn); } }
+}
+.hero-body{ padding: 18px 18px 16px; }
+.hero-title{
+  margin:0 0 6px; font-weight:800; letter-spacing:.01em;
+  font-size: clamp(20px, 3.6vw, 28px);
+}
+.hero-sub{ margin:0; color:var(--muted); }
 
-  header{
-    position:sticky; top:0; z-index:5; padding:18px 14px 22px;
-    background: linear-gradient(180deg, #1a1a1a 0%, #111 100%);
-    border-bottom: 3px solid rgba(255,255,255,.08);
-    text-align:center;
-  }
-  /* シールロゴっぽいタイトル：白フチ＋影 */
-  .title{
-    display:inline-block; padding:8px 14px; transform:skewX(-6deg);
-    color:#fff700; letter-spacing:.03em; font-weight:900; font-size:22px;
-    text-shadow:
-      0 0 0 #fff, 0 1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff, 0 -1px 0 #fff, /* 白フチ */
-      2px 2px 0 #000, 4px 4px 0 rgba(0,0,0,.35); /* 影 */
-    background:
-      linear-gradient(180deg, #ffef5a 0%, #ffd84a 45%, #ffc107 60%, #ffef5a 100%);
-    border: 3px solid #000; border-radius:10px;
-    box-shadow: 0 6px 0 #000, 0 10px 14px rgba(0,0,0,.45);
-  }
-  .subtitle{
-    margin:10px auto 0; color:#fff; opacity:.9; font-size:13px;
-    text-shadow:0 2px 6px rgba(0,0,0,.6);
-  }
+/* ===== Main ===== */
+main{ max-width: 960px; margin: 12px auto 48px; padding: 0 16px; }
 
-  main{ max-width:860px; margin:0 auto; padding:14px; }
+.card{
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  margin: 16px 0;
+  overflow: clip;
+}
+.card-header{
+  display:flex; align-items:center; justify-content:space-between;
+  padding: 14px 16px; cursor: pointer; user-select:none;
+  background: color-mix(in oklab, var(--surface) 90%, transparent);
+}
+.card-header h2{
+  margin:0; font-weight: 700; letter-spacing:.01em; font-size: 16px;
+}
+.card-header .hint{ color: var(--muted); font-size: 13px; }
+.card-content{ display:none; padding: 10px 16px 14px; }
+.card.open .card-content{ display:block; }
+.divider{ height:1px; background: var(--line); margin: 0 0 8px; }
 
-  /* ステッカー枠のカード */
-  .card{
-    background: linear-gradient(180deg, #ffffff, #f7f7f7);
-    margin:14px 6px; border-radius:16px;
-    border: 3px solid var(--gold-deep);
-    box-shadow:
-      0 0 0 4px var(--gold),
-      0 10px 0 #000,
-      0 16px 20px rgba(0,0,0,.45);
-    overflow:hidden; position:relative;
-  }
-  /* 斜めに走るキラッとハイライト */
-  .card::after{
-    content:""; position:absolute; inset:0; pointer-events:none;
-    background: linear-gradient(120deg, transparent 0 40%,
-      rgba(255,255,255,.6) 47%, rgba(255,255,255,.85) 50%,
-      rgba(255,255,255,.6) 53%, transparent 60%);
-    transform: translateX(-120%);
-    animation: shine 3.6s ease-in-out infinite;
-  }
-  @keyframes shine{
-    0%, 65%{ transform: translateX(-130%); }
-    85%{ transform: translateX(130%); }
-    100%{ transform: translateX(130%); }
-  }
+/* List / items */
+.item{ padding: 10px 0; display:flex; gap:12px; align-items: baseline; border-bottom: 1px dashed color-mix(in oklab, var(--line) 70%, transparent); }
+.item:last-child{ border-bottom: none; }
+.time{ flex: 0 0 auto; min-width: 64px; text-align:center; font-feature-settings:"tnum"; font-variant-numeric: tabular-nums;
+  color: var(--tint); border: 1px solid var(--line); border-radius: 10px; padding: 2px 8px; font-weight: 700; }
+.text{ flex: 1 1 auto; color: var(--ink-2); }
+.text b{ color: var(--ink); }
 
-  .card-header{
-    background:
-      repeating-linear-gradient(45deg,
-        rgba(255,255,255,.7) 0 6px, rgba(255,255,255,.45) 6px 12px),
-      linear-gradient(180deg, #ff77a8, #ff4d7a);
-    color:#12010a;
-    padding:14px 16px; display:flex; align-items:center; justify-content:space-between;
-    cursor:pointer; user-select:none;
-    border-bottom:2px solid rgba(0,0,0,.08);
-  }
-  .card-header h2{
-    margin:0; font-size:16px; font-weight:900; letter-spacing:.02em;
-    color:#fff;
-    text-shadow:
-      0 0 0 #000, 0 1px 0 #000, 1px 0 0 #000, -1px 0 0 #000, 0 -1px 0 #000,
-      2px 2px 0 rgba(0,0,0,.35);
-  }
-  .badge{
-    margin-left:8px; padding:2px 8px; border-radius:999px;
-    font-size:11px; font-weight:700; color:#111; background:#fffbcc; border:2px solid #000;
-  }
-  .toggle{
-    font-size:18px; color:#fff; text-shadow:2px 2px 0 #000;
-    transform: translateY(1px);
-  }
+/* Links / small UI */
+.link-row{ margin-top: 6px; display:flex; flex-wrap:wrap; gap:10px; }
+a.inline{
+  display:inline-flex; align-items:center; gap:6px;
+  padding: 6px 10px; border: 1px solid var(--line); border-radius: 10px;
+  text-decoration: none; color: var(--ink);
+}
+a.inline:hover{ background: color-mix(in oklab, var(--surface) 80%, var(--line)); }
+kbd{
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 12px; padding: 2px 6px; border-radius: 6px; border:1px solid var(--line);
+  background: color-mix(in oklab, var(--surface) 88%, transparent);
+}
 
-  .card-content{ display:none; padding:14px 16px; }
-  .card.open .card-content{ display:block; }
+/* Checklist */
+.checklist label{ display:flex; align-items:center; gap: 10px; padding: 8px 0; color: var(--ink-2); }
+.checklist input[type="checkbox"]{ width:18px; height:18px; accent-color:#111827; }
+.grid-2{ display:grid; grid-template-columns: 1fr; gap:4px 24px; }
+@media (min-width: 680px){ .grid-2{ grid-template-columns: 1fr 1fr; } }
 
-  .item{ line-height:1.6; padding:8px 0; }
-  .time{ display:inline-block; min-width:64px; text-align:center;
-    color:#fff; background:linear-gradient(180deg, #00d0ff, #0096ff);
-    border:2px solid #000; border-radius:10px; font-weight:900; margin-right:8px;
-    box-shadow:2px 2px 0 #000;
-  }
-  .spot{ font-weight:900; color:#ff2f6d; text-shadow:1px 1px 0 #fff; }
-  .addr{ color:#5b6068; font-size:12px; margin:4px 0 0 72px; }
-  .note{
-    margin-top:8px; padding:10px 12px; border-radius:12px;
-    background:#fff6d1; border:2px dashed #000; box-shadow:2px 2px 0 #000;
-    font-weight:700;
-  }
-  .map-link{
-    display:inline-block; margin-left:6px; padding:4px 8px; text-decoration:none;
-    color:#111; background:#a7f3d0; border:2px solid #000; border-radius:8px; font-weight:800;
-    box-shadow:2px 2px 0 #000;
-  }
+/* Footer */
+footer{ color: var(--muted); font-size: 12px; text-align:center; padding: 40px 0 60px; }
 
-  .checklist label{ display:flex; align-items:center; gap:10px; padding:8px 0; font-weight:700; }
-  .checklist input[type="checkbox"]{
-    width:20px; height:20px; accent-color:#ff3b7a;
-    border:2px solid #000; border-radius:4px;
-  }
-  .twocol{ display:grid; grid-template-columns:1fr; gap:8px; }
-  @media (min-width:680px){ .twocol{ grid-template-columns:1fr 1fr; } }
-
-  footer{ text-align:center; color:#eee; font-size:12px; padding:28px 0 40px;
-    text-shadow:0 2px 8px rgba(0,0,0,.6); }
+/* Motion policy */
+@media (prefers-reduced-motion: reduce){
+  *{ animation: none !important; transition: none !important; }
+}
 </style>
 </head>
 <body>
-  <header>
-    <div class="title">金沢旅行しおり</div>
-    <div class="subtitle">2025/10/18（土）- 10/19（日）｜ビックリマン風ポップデザイン</div>
-  </header>
 
-  <main>
+<!-- Top bar -->
+<div class="header" role="banner" aria-label="Page header">
+  <div class="nav">
+    <div class="brand">Kanazawa Trip</div>
+    <div class="meta">2025/10/18 – 19</div>
+  </div>
+</div>
 
-    <!-- 概要 -->
-    <section class="card open" data-key="overview">
-      <div class="card-header">
-        <h2>概要 <span class="badge">基本情報</span></h2><span class="toggle">▼</span>
-      </div>
-      <div class="card-content">
-        <div class="item"><span class="spot">出発：</span><span class="time">09:20</span> 東京駅（北陸新幹線）</div>
-        <div class="item"><span class="spot">到着：</span><span class="time">11:52</span> 金沢駅</div>
-        <div class="item"><span class="spot">復路：</span><span class="time">15:57</span> 金沢 → <span class="time">18:28</span> 東京</div>
-        <div class="item"><span class="spot">ホテル：</span>ホテルアマネク金沢 <span class="badge">片町</span></div>
-        <div class="note">メモ：21世紀美術館はスキップ。ランチは「ゴーゴーカレー」／市場食べ歩きは控えめに。</div>
-      </div>
-    </section>
+<!-- Hero -->
+<section class="hero">
+  <!-- hero.jpg があれば差し替え表示。なければグラデが出ます -->
+  <img class="hero-media" src="images/hero.jpg" alt="" onerror="this.style.display='block'">
+  <div class="hero-card">
+    <div class="hero-body">
+      <h1 class="hero-title">金沢旅行しおり</h1>
+      <p class="hero-sub">スマホ最適化・軽量・ダークモード対応。日程はタップで開閉、チェックは端末に保存されます。</p>
+    </div>
+  </div>
+</section>
 
-    <!-- Day 1 -->
-    <section class="card open" data-key="day1">
-      <div class="card-header">
-        <h2>Day 1（10/18 土） <span class="badge">旅のはじまり</span></h2><span class="toggle">▼</span>
+<main>
+
+  <!-- 概要 -->
+  <section class="card open" data-key="overview">
+    <div class="card-header" role="button" tabindex="0" aria-expanded="true">
+      <h2>概要</h2><div class="hint">タップで開閉</div>
+    </div>
+    <div class="card-content" role="region" aria-label="概要">
+      <div class="divider"></div>
+      <div class="item">
+        <div class="time">出発</div>
+        <div class="text">10/18（土） <b>09:20</b> 東京駅（北陸新幹線）</div>
       </div>
-      <div class="card-content">
-        <div class="item"><span class="time">09:20</span> 東京駅 出発（北陸新幹線）</div>
-        <div class="item"><span class="time">11:52</span> 金沢駅 到着 → ホテルへ（荷物預け）</div>
-        <div class="item"><span class="time">12:30</span> <span class="spot">ゴーゴーカレー</span>
-          <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E3%82%B4%E3%83%BC%E3%82%B4%E3%83%BC%E3%82%AB%E3%83%AC%E3%83%BC%20%E9%87%91%E6%B2%A2" target="_blank" rel="noopener">地図</a>
+      <div class="item">
+        <div class="time">到着</div>
+        <div class="text"><b>11:52</b> 金沢駅</div>
+      </div>
+      <div class="item">
+        <div class="time">復路</div>
+        <div class="text">10/19（日） <b>15:57</b> 金沢 → <b>18:28</b> 東京</div>
+      </div>
+      <div class="item">
+        <div class="time">ホテル</div>
+        <div class="text">ホテルアマネク金沢（片町）</div>
+      </div>
+      <div class="link-row">
+        <a class="inline" href="https://www.google.com/maps/search/?api=1&query=%E6%9D%B1%E4%BA%AC%E9%A7%85" target="_blank" rel="noopener">東京駅（地図）</a>
+        <a class="inline" href="https://www.google.com/maps/search/?api=1&query=%E9%87%91%E6%B2%A2%E9%A7%85" target="_blank" rel="noopener">金沢駅（地図）</a>
+        <a class="inline" href="https://www.google.com/maps/search/?api=1&query=%E3%83%9B%E3%83%86%E3%83%AB%E3%82%A2%E3%83%9E%E3%83%8D%E3%82%AF%E9%87%91%E6%B2%A2%20%20920-0981%20%E7%9F%B3%E5%B7%9D%E7%9C%8C%E9%87%91%E6%B2%A2%E5%B8%82%E7%89%87%E7%94%BA%EF%BC%92%E4%B8%81%E7%9B%AE%EF%BC%92%EF%BC%95%E2%88%92%EF%BC%91%EF%BC%97" target="_blank" rel="noopener">ホテル（地図）</a>
+      </div>
+      <p style="margin-top:10px;color:var(--muted);">メモ：21世紀美術館は今回はスキップ。ランチは「ゴーゴーカレー」、市場の食べ歩きは控えめに。</p>
+    </div>
+  </section>
+
+  <!-- Day 1 -->
+  <section class="card open" data-key="day1">
+    <div class="card-header" role="button" tabindex="0" aria-expanded="true">
+      <h2>Day 1（10/18 土）</h2><div class="hint">タップで開閉</div>
+    </div>
+    <div class="card-content" role="region" aria-label="Day 1">
+      <div class="divider"></div>
+
+      <div class="item">
+        <div class="time">09:20</div>
+        <div class="text">東京駅 出発（北陸新幹線）</div>
+      </div>
+
+      <div class="item">
+        <div class="time">11:52</div>
+        <div class="text">金沢駅 到着 → ホテルへ移動（荷物預け）</div>
+      </div>
+
+      <div class="item">
+        <div class="time">12:30</div>
+        <div class="text"><b>ゴーゴーカレー</b>
+          <div class="link-row">
+            <a class="inline" href="https://www.google.com/maps/search/?api=1&query=%E3%82%B4%E3%83%BC%E3%82%B4%E3%83%BC%E3%82%AB%E3%83%AC%E3%83%BC%20%E9%87%91%E6%B2%A2" target="_blank" rel="noopener">地図</a>
+          </div>
         </div>
-        <div class="item"><span class="time">14:00</span> <span class="spot">近江町市場</span>（軽め散策）
-          <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E8%BF%91%E6%B1%9F%E7%94%BA%E5%B8%82%E5%A0%B4" target="_blank" rel="noopener">地図</a>
-        </div>
-        <div class="item"><span class="time">16:00</span> ひがし茶屋街（甘味・カフェ）</div>
-        <div class="item"><span class="time">19:00</span> <span class="spot">味処 高崎</span>（予約）
-          <div class="addr">〒920-0865 石川県金沢市長町１丁目２−２２</div>
-          <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E5%91%B3%E5%87%A6%20%E9%AB%98%E5%B4%8E%20%E9%87%91%E6%B2%A2" target="_blank" rel="noopener">地図</a>
-        </div>
-        <div class="note">移動ヒント：市内はバスが便利。時間節約ならタクシー併用◎</div>
       </div>
-    </section>
 
-    <!-- Day 2 -->
-    <section class="card" data-key="day2">
-      <div class="card-header">
-        <h2>Day 2（10/19 日） <span class="badge">締め</span></h2><span class="toggle">▼</span>
-      </div>
-      <div class="card-content">
-        <div class="item"><span class="time">08:30</span> 朝食（ホテル周辺）</div>
-        <div class="item"><span class="time">09:30</span> <span class="spot">兼六園</span>
-          <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E5%85%BC%E5%85%AD%E5%9C%92" target="_blank" rel="noopener">地図</a>
+      <div class="item">
+        <div class="time">14:00</div>
+        <div class="text"><b>近江町市場</b>（軽めに）
+          <div class="link-row">
+            <a class="inline" href="https://www.google.com/maps/search/?api=1&query=%E8%BF%91%E6%B1%9F%E7%94%BA%E5%B8%82%E5%A0%B4" target="_blank" rel="noopener">地図</a>
+          </div>
         </div>
-        <div class="item"><span class="time">11:00</span> お土産ショッピング（近江町 or 金沢百番街）</div>
-        <div class="item"><span class="time">14:40</span> 金沢駅へ（駅弁・ドリンク確保）</div>
-        <div class="item"><span class="time">15:57</span> 金沢 発 → <span class="time">18:28</span> 東京 着</div>
       </div>
-    </section>
 
-    <!-- 持ち物チェック -->
-    <section class="card" data-key="pack">
-      <div class="card-header">
-        <h2>持ち物チェック <span class="badge">準備</span></h2><span class="toggle">▼</span>
+      <div class="item">
+        <div class="time">16:00</div>
+        <div class="text">ひがし茶屋街（カフェ休憩）</div>
       </div>
-      <div class="card-content checklist twocol">
+
+      <div class="item">
+        <div class="time">19:00</div>
+        <div class="text"><b>味処 高崎</b>（予約）
+          <div style="color:var(--muted);font-size:13px;margin-top:4px;">〒920-0865 石川県金沢市長町１丁目２−２２</div>
+          <div class="link-row">
+            <a class="inline" href="https://www.google.com/maps/search/?api=1&query=%E5%91%B3%E5%87%A6%20%E9%AB%98%E5%B4%8E%20%E9%87%91%E6%B2%A2" target="_blank" rel="noopener">地図</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Day 2 -->
+  <section class="card" data-key="day2">
+    <div class="card-header" role="button" tabindex="0" aria-expanded="false">
+      <h2>Day 2（10/19 日）</h2><div class="hint">タップで開閉</div>
+    </div>
+    <div class="card-content" role="region" aria-label="Day 2">
+      <div class="divider"></div>
+
+      <div class="item">
+        <div class="time">08:30</div>
+        <div class="text">朝食（ホテル周辺）</div>
+      </div>
+
+      <div class="item">
+        <div class="time">09:30</div>
+        <div class="text"><b>兼六園</b>
+          <div class="link-row">
+            <a class="inline" href="https://www.google.com/maps/search/?api=1&query=%E5%85%BC%E5%85%AD%E5%9C%92" target="_blank" rel="noopener">地図</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="time">11:00</div>
+        <div class="text">お土産ショッピング（近江町 or 金沢百番街）</div>
+      </div>
+
+      <div class="item">
+        <div class="time">14:40</div>
+        <div class="text">金沢駅へ移動（駅弁・ドリンク確保）</div>
+      </div>
+
+      <div class="item">
+        <div class="time">15:57</div>
+        <div class="text">金沢 発 → <b>18:28</b> 東京 着</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 持ち物チェック -->
+  <section class="card" data-key="pack">
+    <div class="card-header" role="button" tabindex="0" aria-expanded="false">
+      <h2>持ち物チェック</h2><div class="hint">タップで開閉</div>
+    </div>
+    <div class="card-content" role="region" aria-label="持ち物チェック">
+      <div class="divider"></div>
+      <div class="grid-2 checklist">
         <label><input type="checkbox"> 身分証 / 保険証</label>
         <label><input type="checkbox"> 旅程（このページURL）</label>
         <label><input type="checkbox"> モバイルバッテリー & ケーブル</label>
@@ -224,31 +315,46 @@
         <label><input type="checkbox"> カメラ / 充電</label>
         <label><input type="checkbox"> ハンドタオル / ティッシュ</label>
       </div>
-    </section>
+    </div>
+  </section>
 
-  </main>
+</main>
 
-  <footer>© 2025 Kanazawa Trip • Sticker Pop Theme</footer>
+<footer>© 2025 Kanazawa Trip</footer>
 
 <script>
-  // --- カード開閉（状態を保存） ---
-  document.querySelectorAll('.card').forEach(card => {
-    const key = 'open-' + (card.dataset.key || '');
-    if (localStorage.getItem(key) === '1') card.classList.add('open');
-    card.querySelector('.card-header').addEventListener('click', () => {
-      card.classList.toggle('open');
-      localStorage.setItem(key, card.classList.contains('open') ? '1' : '0');
-    });
-  });
+/* アコーディオン開閉＋状態保存（localStorage） */
+document.querySelectorAll('.card').forEach(card => {
+  const key = 'open-' + (card.dataset.key || '');
+  const header = card.querySelector('.card-header');
+  const region = card.querySelector('.card-content');
 
-  // --- チェックリスト永続化 ---
-  document.querySelectorAll('.checklist input[type="checkbox"]').forEach((cb, i) => {
-    const k = 'check-' + i;
-    cb.checked = localStorage.getItem(k) === '1';
-    cb.addEventListener('change', () => {
-      localStorage.setItem(k, cb.checked ? '1' : '0');
-    });
+  // 保存状態の復元
+  if (localStorage.getItem(key) === '1') {
+    card.classList.add('open');
+    header.setAttribute('aria-expanded', 'true');
+  }
+
+  function toggle(){
+    const isOpen = card.classList.toggle('open');
+    localStorage.setItem(key, isOpen ? '1' : '0');
+    header.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  }
+
+  header.addEventListener('click', toggle);
+  header.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
   });
+});
+
+/* チェックリスト保存 */
+document.querySelectorAll('.checklist input[type="checkbox"]').forEach((cb, i) => {
+  const k = 'check-' + i;
+  cb.checked = localStorage.getItem(k) === '1';
+  cb.addEventListener('change', () => {
+    localStorage.setItem(k, cb.checked ? '1' : '0');
+  });
+});
 </script>
 </body>
 </html>
