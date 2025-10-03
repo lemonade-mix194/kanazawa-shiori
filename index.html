@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>金沢旅行しおり（2025/10/18-19）</title>
+<meta name="description" content="2025年10月18-19日の金沢旅行インタラクティブしおり">
+<style>
+  :root { --brand:#0d6efd; --bg:#f7f7f9; --ink:#0f172a; }
+  * { box-sizing: border-box; }
+  html, body { margin:0; padding:0; background:var(--bg); color:var(--ink); font-family: system-ui, -apple-system, 'Hiragino Kaku Gothic ProN', 'Segoe UI', Roboto, 'Noto Sans JP', sans-serif; }
+  header { padding:18px 16px; background:var(--brand); color:#fff; text-align:center; position:sticky; top:0; z-index:10; }
+  header h1 { margin:0; font-size:20px; letter-spacing:.02em; }
+  header p { margin:6px 0 0; opacity:.9; font-size:13px; }
+  main { max-width:840px; margin:0 auto; padding:12px; }
+  .card { background:#fff; border-radius:14px; margin:12px 0; box-shadow:0 6px 16px rgba(0,0,0,.06); overflow:hidden; }
+  .card-header { padding:16px; background:#e9f1ff; color:#012a4a; display:flex; align-items:center; justify-content:space-between; }
+  .card-header h2 { margin:0; font-size:16px; }
+  .toggle { font-size:18px; opacity:.8; }
+  .card-content { display:none; padding:14px 16px; }
+  .card.open .card-content { display:block; }
+  .grid { display:grid; grid-template-columns: 1fr; gap:10px; }
+  .item { line-height:1.6; padding:6px 0; }
+  .time { color:var(--brand); font-weight:700; margin-right:.35em; }
+  .spot { font-weight:600; }
+  .addr { color:#475569; font-size:12px; margin-left:24px; }
+  .link-row a { display:inline-block; margin-right:12px; text-decoration:underline; color:var(--brand); }
+  .badge { background:#eef2ff; color:#3730a3; padding:2px 8px; border-radius:999px; font-size:11px; margin-left:6px; }
+  .note { background:#fff7ed; border-left:4px solid #fb923c; padding:10px 12px; border-radius:8px; font-size:13px; }
+  .checklist label { display:flex; align-items:center; gap:10px; padding:8px 0; }
+  .twocol { display:grid; grid-template-columns:1fr; gap:12px; }
+  @media (min-width:680px) { .twocol { grid-template-columns:1fr 1fr; } }
+  footer { text-align:center; color:#64748b; font-size:12px; padding:24px 0 40px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>金沢旅行しおり</h1>
+  <p>2025/10/18（土）- 10/19（日）</p>
+</header>
+
+<main>
+
+  <!-- 概要 -->
+  <section class="card open" data-key="overview">
+    <div class="card-header">
+      <h2>概要</h2><span class="toggle">▼</span>
+    </div>
+    <div class="card-content">
+      <div class="grid">
+        <div class="item"><span class="spot">出発：</span>10/18（土）<span class="time">09:20</span> 東京駅（北陸新幹線）</div>
+        <div class="item"><span class="spot">到着：</span><span class="time">11:52</span> 金沢駅</div>
+        <div class="item"><span class="spot">復路：</span>10/19（日）<span class="time">15:57</span> 金沢発 → <span class="time">18:28</span> 東京着</div>
+        <div class="item"><span class="spot">ホテル：</span>ホテルアマネク金沢 <span class="badge">片町</span></div>
+      </div>
+      <div class="note">メモ：21世紀美術館は今回はスキップ。ランチは「ゴーゴーカレー」、市場の食べ歩きは控えめに。</div>
+    </div>
+  </section>
+
+  <!-- Day 1 -->
+  <section class="card open" data-key="day1">
+    <div class="card-header">
+      <h2>Day 1（10/18 土）</h2><span class="toggle">▼</span>
+    </div>
+    <div class="card-content">
+      <div class="item"><span class="time">09:20</span> 東京駅 出発（北陸新幹線）</div>
+      <div class="item"><span class="time">11:52</span> 金沢駅 到着 → ホテルへ移動（荷物預け）</div>
+      <div class="item"><span class="time">12:30</span> ゴーゴーカレー でランチ</div>
+      <div class="item"><span class="time">14:00</span> 近江町市場 散策（軽めに）</div>
+      <div class="item"><span class="time">16:00</span> ひがし茶屋街 散歩（甘味・カフェ休憩）</div>
+      <div class="item"><span class="time">19:00</span> 味処 高崎 で夕食</div>
+      <div class="note">移動ヒント：市内はバスが便利。時間節約ならタクシー併用◎</div>
+    </div>
+  </section>
+
+  <!-- Day 2 -->
+  <section class="card" data-key="day2">
+    <div class="card-header">
+      <h2>Day 2（10/19 日）</h2><span class="toggle">▼</span>
+    </div>
+    <div class="card-content">
+      <div class="item"><span class="time">08:30</span> 朝食（ホテル周辺）</div>
+      <div class="item"><span class="time">09:30</span> 兼六園 散策</div>
+      <div class="item"><span class="time">11:00</span> お土産ショッピング（近江町市場 or 金沢百番街）</div>
+      <div class="item"><span class="time">14:40</span> 金沢駅へ移動（駅弁・ドリンク確保）</div>
+      <div class="item"><span class="time">15:57</span> 金沢 発 → <span class="time">18:28</span> 東京 着</div>
+    </div>
+  </section>
+
+  <!-- 持ち物チェック -->
+  <section class="card" data-key="pack">
+    <div class="card-header">
+      <h2>持ち物チェック</h2><span class="toggle">▼</span>
+    </div>
+    <div class="card-content checklist twocol">
+      <label><input type="checkbox"> 身分証 / 保険証</label>
+      <label><input type="checkbox"> 旅程（このページURL）</label>
+      <label><input type="checkbox"> モバイルバッテリー & ケーブル</label>
+      <label><input type="checkbox"> 現金・カード・交通系IC</label>
+      <label><input type="checkbox"> 常備薬 / 絆創膏</label>
+      <label><input type="checkbox"> 折り畳み傘</label>
+      <label><input type="checkbox"> カメラ / 充電</label>
+      <label><input type="checkbox"> ハンドタオル / ティッシュ</label>
+    </div>
+  </section>
+
+</main>
+
+<footer>© 2025 Kanazawa Trip</footer>
+
+<script>
+  // カード開閉と状態保存
+  document.querySelectorAll('.card').forEach(card => {
+    const key = 'open-' + (card.dataset.key || '');
+    if (localStorage.getItem(key) === '1') card.classList.add('open');
+    card.querySelector('.card-header').addEventListener('click', () => {
+      card.classList.toggle('open');
+      localStorage.setItem(key, card.classList.contains('open') ? '1' : '0');
+    });
+  });
+
+  // チェックリストの状態保存
+  document.querySelectorAll('.checklist input[type="checkbox"]').forEach((cb, i) => {
+    const k = 'check-' + i;
+    cb.checked = localStorage.getItem(k) === '1';
+    cb.addEventListener('change', () => {
+      localStorage.setItem(k, cb.checked ? '1' : '0');
+    });
+  });
+</script>
+</body>
+</html>
