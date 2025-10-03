@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>金沢旅行しおり｜2025/10/18-19</title>
-<meta name="description" content="スマホ最適化・軽量・ダークモード対応の金沢旅行しおり。日程の開閉・持ち物チェックの保存に対応。">
+<meta name="description" content="スマホ最適化・軽量・ダークモード対応の金沢旅行しおり。日程の開閉・スポット解説・持ち物チェックの保存に対応。">
 <meta name="theme-color" content="#0b0b0c">
 <meta property="og:title" content="金沢旅行しおり｜2025/10/18-19">
 <meta property="og:description" content="日程はタップで開閉、スポット解説とWikipediaリンク付き。">
@@ -44,19 +44,14 @@ html,body{
 /* ===== Main ===== */
 main{ max-width:960px; margin: 12px auto 48px; padding: 0 16px; }
 
-/* YouTube embed (Hero代替) */
+/* YouTube embed */
 .video-wrap{
   border:1px solid var(--line); border-radius: clamp(12px, 2vw, 20px);
   background:var(--surface); box-shadow:var(--shadow); overflow:hidden;
   margin:16px 0 8px;
 }
-.ratio{
-  position:relative; width:100%; padding-top:56.25%; /* 16:9 */
-  background:linear-gradient(180deg, #f3f4f6, #e7eaee);
-}
-.ratio > iframe{
-  position:absolute; inset:0; width:100%; height:100%; border:0;
-}
+.ratio{ position:relative; width:100%; padding-top:56.25%; background:linear-gradient(180deg, #f3f4f6, #e7eaee); }
+.ratio > iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; }
 
 /* Intro blurb */
 .intro{
@@ -90,14 +85,14 @@ main{ max-width:960px; margin: 12px auto 48px; padding: 0 16px; }
 }
 .item:last-child{ border-bottom:none; }
 .time{
-  flex:0 0 auto; min-width:64px; text-align:center;
+  flex:0 0 auto; min-width:88px; text-align:center;
   font-feature-settings:"tnum"; font-variant-numeric: tabular-nums;
   color:var(--tint); border:1px solid var(--line); border-radius:10px; padding:2px 8px; font-weight:700;
 }
 .text{ flex:1 1 auto; color:var(--ink-2); }
 .text b{ color:var(--ink); }
 
-/* Spot details (tap to reveal) */
+/* Spot details */
 .item.has-detail{ cursor:pointer; }
 .item.has-detail .text{ position:relative; }
 .item.has-detail .text::after{
@@ -105,7 +100,8 @@ main{ max-width:960px; margin: 12px auto 48px; padding: 0 16px; }
   color:var(--muted); font-size:12px;
 }
 .detail{
-  display:none; margin-top:8px; padding:10px 12px; border:1px dashed var(--line); border-radius:10px; background: color-mix(in oklab, var(--surface) 90%, transparent);
+  display:none; margin-top:8px; padding:10px 12px; border:1px dashed var(--line); border-radius:10px;
+  background: color-mix(in oklab, var(--surface) 90%, transparent);
   color:var(--ink-2); font-size:14px;
 }
 .item.open .detail{ display:block; }
@@ -145,7 +141,7 @@ footer{ color:var(--muted); font-size:12px; text-align:center; padding:40px 0 60
 </div>
 
 <main>
-  <!-- YouTube（トップ画像の代わり） -->
+  <!-- YouTube（トップ画像の代替） -->
   <section class="video-wrap" aria-label="旅のムード動画">
     <div class="ratio">
       <iframe
@@ -160,9 +156,7 @@ footer{ color:var(--muted); font-size:12px; text-align:center; padding:40px 0 60
   <!-- タイトル＋金沢の概要（1-2文） -->
   <section class="intro">
     <h1>金沢旅行しおり</h1>
-    <p>
-      加賀藩前田家の城下町として栄えた金沢は、武家文化と伝統工芸が息づく街。金箔や加賀友禅、近海の海の幸など、上質な美と味に出会える北陸のハイライトです。
-    </p>
+    <p>加賀藩前田家の城下町として栄えた金沢は、武家文化と洗練された工芸が息づく街。金箔や加賀友禅、海の幸に恵まれた食文化など、上質な美と味が凝縮した北陸のハイライトです。</p>
   </section>
 
   <!-- 概要 -->
@@ -188,7 +182,7 @@ footer{ color:var(--muted); font-size:12px; text-align:center; padding:40px 0 60
         <div class="text">
           ホテルアマネク金沢（片町）
           <div class="link-row">
-            <a class="inline" href="https://www.google.com/maps/search/?api=1&query=%E3%83%9B%E3%83%86%E3%83%AB%E3%82%A2%E3%83%9E%E3%83%8D%E3%82%AF%E9%87%91%E6%B2%A2%20%20920-0981%20%E7%9F%B3%E5%B7%9D%E7%9C%8C%E9%87%91%E6%B2%A2%E5%B8%82%E7%89%87%E7%94%BA%EF%BC%92%E4%B8%81%E7%9B%AE%EF%BC%92%EF%BC%95%E2%88%92%EF%BC%91%EF%BC%97" target="_blank" rel="noopener">ホテル（地図）</a>
+            <a class="inline" href="https://www.google.com/maps/search/?api=1&query=%E3%83%9B%E3%83%86%E3%83%AB%E3%82%A2%E3%83%9E%E3%83%8D%E3%82%AF%E9%87%91%E6%B2%A2%20%20920-0981%20%E7%9F%B3%E5%B7%9D%E7%9C%8C%E9%87%91%E6%B2%A2%E5%B8%82%E7%89%87%E7%94%BA%EF%BC%92%E4%B8%81%E7%9B%AE%EF%BC%92%EF%BC%95%E2%88%92%EF%BC%91%EF%BC%97" target="_blank" rel="noopener">地図</a>
           </div>
         </div>
       </div>
@@ -204,53 +198,79 @@ footer{ color:var(--muted); font-size:12px; text-align:center; padding:40px 0 60
     <div class="card-content" role="region" aria-label="Day 1">
       <div class="divider"></div>
 
-      <div class="item">
-        <div class="time">09:20</div>
-        <div class="text">東京駅 出発（北陸新幹線）</div>
-      </div>
-
-      <div class="item">
-        <div class="time">11:52</div>
-        <div class="text">金沢駅 到着 → ホテルへ移動（荷物預け）</div>
-      </div>
-
-      <!-- ゴーゴーカレー（タップで概要表示） -->
       <div class="item has-detail" tabindex="0" role="button" aria-expanded="false">
-        <div class="time">12:30</div>
-        <div class="text"><b>ゴーゴーカレー</b>
+        <div class="time">11:52</div>
+        <div class="text"><b>金沢駅到着（鼓門で記念撮影）</b>
           <div class="detail">
-            濃厚なルーと千切りキャベツ、ステンレス皿が特徴の金沢カレーを代表するチェーン。ボリュームのあるカツとの相性が抜群で、サクっと満足感の高いランチに最適。現地で“本場の味”を体験できるのも旅の醍醐味。<br>
-            <a href="https://ja.wikipedia.org/wiki/%E3%82%B4%E3%83%BC%E3%82%B4%E3%83%BC%E3%82%AB%E3%83%AC%E3%83%BC%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97" target="_blank" rel="noopener">Wikipediaで詳しく</a>
+            金沢駅の象徴「鼓門」は加賀宝生の鼓をイメージした巨大な門。木組みの迫力ある造形は写真映え抜群で、旅のスタートにふさわしいランドマーク。駅前の兼六園口広場は天候を気にせず集合しやすいのも魅力。<br>
+            <a href="https://ja.wikipedia.org/wiki/%E9%87%91%E6%B2%A2%E9%A7%85" target="_blank" rel="noopener">Wikipediaで詳しく</a>
           </div>
         </div>
       </div>
 
-      <!-- 近江町市場 -->
+      <div class="item">
+        <div class="time">→</div>
+        <div class="text">荷物をロッカー or ホテルへ（バス約10分）</div>
+      </div>
+
       <div class="item has-detail" tabindex="0" role="button" aria-expanded="false">
-        <div class="time">14:00</div>
-        <div class="text"><b>近江町市場</b>
+        <div class="time">12:30–13:30</div>
+        <div class="text"><b>昼食：近江町市場</b>（山さん寿司本店 / ひら井本店 など）
           <div class="detail">
-            “金沢の台所”として300年以上の歴史がある市場。日本海の新鮮な海産物や加賀野菜、惣菜が並び、活気あるローカルの空気を味わえる。テイクアウトの食べ歩きは控えめに、厳選して楽しむのがおすすめ。<br>
+            “金沢の台所”として親しまれる300年の市場。新鮮な地魚の寿司や海鮮丼が人気で、加賀野菜や乾物、総菜の店も充実。金箔ソフトなど食べ歩きも楽しいが、混雑時は行列対策を意識すると快適。<br>
             <a href="https://ja.wikipedia.org/wiki/%E8%BF%91%E6%B1%9F%E7%94%BA%E5%B8%82%E5%A0%B4" target="_blank" rel="noopener">Wikipediaで詳しく</a>
           </div>
         </div>
       </div>
 
-      <!-- ひがし茶屋街 -->
       <div class="item has-detail" tabindex="0" role="button" aria-expanded="false">
-        <div class="time">16:00</div>
-        <div class="text">ひがし茶屋街（カフェ休憩）
+        <div class="time">14:00–15:15</div>
+        <div class="text"><b>兼六園 & 金沢城公園</b>
           <div class="detail">
-            格子戸の町家が連なる情緒豊かな茶屋街。夕方以降は観光客も落ち着き、石畳に灯る光が映えるフォトスポットが点在。和スイーツや抹茶で一息つきながら、金沢らしい古都の風情を満喫できる。<br>
+            日本三名園の一つ・兼六園は、四季の移ろいが映える池泉回遊式庭園。隣接する金沢城公園では石垣や復元建築から城郭の壮麗さを体感できる。秋は色づく木々と城の白壁が美しく、散策に最適。<br>
+            <a href="https://ja.wikipedia.org/wiki/%E5%85%BC%E5%85%AD%E5%9C%92" target="_blank" rel="noopener">兼六園 Wikipedia</a> ／
+            <a href="https://ja.wikipedia.org/wiki/%E9%87%91%E6%B2%A2%E5%9F%8E" target="_blank" rel="noopener">金沢城 Wikipedia</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="time">15:30–16:00</div>
+        <div class="text">ホテルアマネク金沢にチェックイン（片町へバス/タクシー）</div>
+      </div>
+
+      <div class="item has-detail" tabindex="0" role="button" aria-expanded="false">
+        <div class="time">16:15–17:45</div>
+        <div class="text"><b>ひがし茶屋街 散策</b>（夕暮れが見どころ）
+          <div class="detail">
+            格子戸の町家が連なる茶屋街。夕暮れどきは石畳と木格子に灯りが映え、情緒ある写真が撮れる。金箔ソフトや町家カフェで一息つきつつ、静かな横道まで足をのばすと古都の雰囲気をより味わえる。<br>
             <a href="https://ja.wikipedia.org/wiki/%E3%81%B2%E3%81%8C%E3%81%97%E8%8C%B6%E5%B1%8B%E8%A1%97" target="_blank" rel="noopener">Wikipediaで詳しく</a>
           </div>
         </div>
       </div>
 
       <div class="item">
+        <div class="time">18:00–18:45</div>
+        <div class="text">ホテルで小休憩</div>
+      </div>
+
+      <div class="item has-detail" tabindex="0" role="button" aria-expanded="false">
         <div class="time">19:00</div>
-        <div class="text"><b>味処 高崎</b>（予約）
-          <div style="color:var(--muted);font-size:13px;margin-top:4px;">〒920-0865 石川県金沢市長町１丁目２−２２</div>
+        <div class="text"><b>夕食：味処 高崎（長町）</b>
+          <div class="detail">
+            地元食材を活かした郷土料理が評判の和食店。のどぐろ塩焼きや治部煮など、金沢らしい味を落ち着いた雰囲気で楽しめる。混雑しやすい時間帯は予約が安心。<br>
+            <a href="https://ja.wikipedia.org/wiki/%E6%B2%BB%E9%83%A8%E7%85%AE" target="_blank" rel="noopener">治部煮（Wikipedia）</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="item has-detail" tabindex="0" role="button" aria-expanded="false">
+        <div class="time">21:00–21:30</div>
+        <div class="text"><b>片町で地酒を楽しむ（希望時）</b>
+          <div class="detail">
+            片町周辺には立ち飲みや角打ちが点在し、手取川や天狗舞など北陸の銘酒に出会える。短時間でも飲み比べができる店も多く、締めにふらりと立ち寄るのに好適。<br>
+            <a href="https://ja.wikipedia.org/wiki/%E9%85%92%E9%85%94" target="_blank" rel="noopener">日本酒（Wikipedia）</a>
+          </div>
         </div>
       </div>
 
@@ -266,40 +286,64 @@ footer{ color:var(--muted); font-size:12px; text-align:center; padding:40px 0 60
       <div class="divider"></div>
 
       <div class="item">
-        <div class="time">08:30</div>
-        <div class="text">朝食（ホテル周辺）</div>
+        <div class="time">7:30–8:30</div>
+        <div class="text">朝食（ホテル／軽め）</div>
       </div>
 
-      <!-- 兼六園（タップで概要表示） -->
       <div class="item has-detail" tabindex="0" role="button" aria-expanded="false">
-        <div class="time">09:30</div>
-        <div class="text"><b>兼六園</b>
+        <div class="time">9:00–10:00</div>
+        <div class="text"><b>長町武家屋敷跡 散策</b>（ホテルから徒歩約5分）
           <div class="detail">
-            日本三名園の一つ。池泉回遊式の大庭園で、広々とした眺望・幽邃・人力・蒼古・水泉・眺望の六勝を備えるとされる。季節ごとの表情が美しく、朝の澄んだ空気の中を歩くと気持ちが整う名所。<br>
-            <a href="https://ja.wikipedia.org/wiki/%E5%85%BC%E5%85%AD%E5%9C%92" target="_blank" rel="noopener">Wikipediaで詳しく</a>
+            土塀と石畳が残る旧武家地。静かな路地に面した用水や長屋門が往時を偲ばせ、朝の散策に心地よい。小さな資料館や庭園も点在し、城下町の生活美を感じられる。<br>
+            <a href="https://ja.wikipedia.org/wiki/%E9%95%B7%E7%94%BA_(%E9%87%91%E6%B2%A2%E5%B8%82)" target="_blank" rel="noopener">Wikipediaで詳しく</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="item has-detail" tabindex="0" role="button" aria-expanded="false">
+        <div class="time">10:15–11:15</div>
+        <div class="text"><b>妙立寺（忍者寺）</b>（武家屋敷から徒歩約10分）
+          <div class="detail">
+            外観は質素ながら内部に隠し階段や落とし穴、迷路のような通路を備える寺院。戦乱期の防衛構造が工夫され、案内付き拝観で仕掛けの数々を体験できる。事前予約が安心。<br>
+            <a href="https://ja.wikipedia.org/wiki/%E5%A6%99%E7%AB%8B%E5%AF%BA_(%E9%87%91%E6%B2%A2%E5%B8%82)" target="_blank" rel="noopener">Wikipediaで詳しく</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="item has-detail" tabindex="0" role="button" aria-expanded="false">
+        <div class="time">11:45–12:30</div>
+        <div class="text"><b>ランチ：ゴーゴーカレー（金沢駅総本山）</b>
+          <div class="detail">
+            濃厚な黒色ルーに千切りキャベツ、ステンレス皿が定番の金沢カレー。駅にある総本山はアクセス良好で、ロースカツとの組み合わせは食べ応え十分。移動前の腹ごしらえに最適。<br>
+            <a href="https://ja.wikipedia.org/wiki/%E3%82%B4%E3%83%BC%E3%82%B4%E3%83%BC%E3%82%AB%E3%83%AC%E3%83%BC%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97" target="_blank" rel="noopener">Wikipediaで詳しく</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="item has-detail" tabindex="0" role="button" aria-expanded="false">
+        <div class="time">12:45–14:30</div>
+        <div class="text"><b>金沢駅 百番街でお土産ショッピング</b>
+          <div class="detail">
+            駅直結の大型商業ゾーン。中田屋のきんつば、柴舟小出の柴舟、地酒（手取川・天狗舞など）、金箔工芸品といった“金沢らしさ”が揃う。配送や保冷対応の有無も早めに確認するとスマート。<br>
+            <a href="https://ja.wikipedia.org/wiki/%E9%87%91%E6%B2%A2%E9%A7%85" target="_blank" rel="noopener">金沢駅（Wikipedia）</a>
           </div>
         </div>
       </div>
 
       <div class="item">
-        <div class="time">11:00</div>
-        <div class="text">お土産ショッピング（近江町 or 金沢百番街）</div>
-      </div>
-
-      <div class="item">
-        <div class="time">14:40</div>
-        <div class="text">金沢駅へ移動（駅弁・ドリンク確保）</div>
+        <div class="time">14:30–15:30</div>
+        <div class="text">駅構内カフェで休憩</div>
       </div>
 
       <div class="item">
         <div class="time">15:57</div>
-        <div class="text">金沢 発 → <b>18:28</b> 東京 着</div>
+        <div class="text">新幹線で東京へ（<b>18:28</b> 着）</div>
       </div>
 
     </div>
   </section>
 
-  <!-- 持ち物チェック（指定の項目へ差し替え） -->
+  <!-- 持ち物チェック（指定項目） -->
   <section class="card" data-key="pack">
     <div class="card-header" role="button" tabindex="0" aria-expanded="false">
       <h2>持ち物チェック</h2><div class="hint">タップで開閉</div>
